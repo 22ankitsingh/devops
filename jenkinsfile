@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Use 'git' step to check out from a specific repository and branch
-                git url: 'https://github.com/22ankitsingh/devops.git', branch: 'main'
+                git url: 'https://github.com/22ankitsingh/devops.git', branch: 'master'
             }
         }
 
