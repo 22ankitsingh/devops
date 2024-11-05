@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Use 'git' step to check out from a specific repository and branch
+                git url: 'https://github.com/22ankitsingh/devops.git', branch: 'main'
+            }
+        }
+
+        stage('Run Python Scripts') {
+            parallel {
+                stage('Run script1.py') {
+                    steps {
+                        bat 'python uma.py'  // Use 'bat' for Windows
+                    }
+                }
+                stage('Run script2.java') {
+                    steps {
+                        bat 'javac HelloWorld.java'
+                        bat 'java  HelloWorld'// Use 'bat' for Windows
+                    }
+                }
+                
+            }
+        }
+    }
+}
