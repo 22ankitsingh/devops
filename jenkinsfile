@@ -9,13 +9,6 @@ pipeline {
             }
         }
 
-        stage('Run Python Scripts') {
-            parallel {
-                stage('Run script1.py') {
-                    steps {
-                        bat 'python uma.py'  // Use 'bat' for Windows
-                    }
-                }
                 stage('Run script2.java') {
                     steps {
                         bat 'javac HelloWorld.java'
