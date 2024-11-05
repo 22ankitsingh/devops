@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    environment {
+        // Example environment variables
+        APP_NAME = 'my-app'
+        BUILD_DIR = 'build'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/your/repo.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo "Building ${APP_NAME}..."
+                sh './build_script.sh'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Running tests..."
+                sh './test_script.sh'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying ${APP_NAME}..."
+                sh './deploy_script.sh'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Deployment succeeded.'
+        }
+        failure {
+            echo 'Deployment failed.'
+        }
+    }
+}
