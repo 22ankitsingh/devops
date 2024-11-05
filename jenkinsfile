@@ -12,7 +12,7 @@ pipeline {
                 stage('Run script2.java') {
                     steps {
                         bat 'javac HelloWorld.java'
-                        bat 'java  HelloWorld'// Use 'bat' for Windows
+
                     }
                 }
                 
