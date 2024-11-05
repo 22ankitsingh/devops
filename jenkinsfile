@@ -11,7 +11,7 @@ pipeline {
 
                 stage('Run script1.py') {
                     steps {
-                        bat 'C:\ProgramData\Jenkins\.jenkins\workspace\python project>C:\Users\cse\AppData\Local\Programs\Python\Python312-32\python.exe uma.py'
+                        bat 'python uma.py'
 
                     }
                 }
