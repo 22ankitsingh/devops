@@ -1,47 +1,43 @@
 pipeline {
-    agent any
+    agent any  // This tells Jenkins to run the pipeline on any available agent
 
     environment {
-        // Example environment variables
-        APP_NAME = 'my-app'
-        BUILD_DIR = 'build'
+        // You can define environment variables here
+        MY_VAR = "some_value"
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/your/repo.git'
-            }
-        }
-
         stage('Build') {
             steps {
-                echo "Building ${APP_NAME}..."
-                sh './build_script.sh'
+                echo 'Building the project...'
+                // Add your build commands here, for example:
+                // sh 'make build'
             }
         }
-
+        
         stage('Test') {
             steps {
-                echo "Running tests..."
-                sh './test_script.sh'
+                echo 'Running tests...'
+                // Add your test commands here, for example:
+                // sh 'make test'
             }
         }
-
+        
         stage('Deploy') {
             steps {
-                echo "Deploying ${APP_NAME}..."
-                sh './deploy_script.sh'
+                echo 'Deploying the application...'
+                // Add your deployment steps here, for example:
+                // sh 'deploy_script.sh'
             }
         }
     }
-
+    
     post {
         success {
-            echo 'Deployment succeeded.'
+            echo 'Pipeline executed successfully!'
         }
         failure {
-            echo 'Deployment failed.'
+            echo 'Pipeline failed!'
         }
     }
 }
