@@ -9,9 +9,9 @@ pipeline {
             }
         }
 
-                stage('Run script2.java') {
+                stage('Run script1.py') {
                     steps {
-                        bat 'javac HelloWorld.java'
+                        bat 'python uma.py'
 
                     }
                 }
