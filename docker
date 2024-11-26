@@ -1,0 +1,11 @@
+# in editor
+FROM python:3.13
+
+ADD  main.py .
+
+CMD [ "python","./main.py" ]
+
+#in console
+
+docker build -t image .
+docker run image
